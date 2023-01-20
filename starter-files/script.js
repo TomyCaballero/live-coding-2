@@ -1,5 +1,8 @@
 // API
 const API_ENDPOINT = 'https://yesno.wtf/api';
+let btnAns = document.getElementById("button")
+let answer = document.getElementById("answer")
+let input = document.getElementById("input")
 
 /**
  * STEPS:
@@ -11,3 +14,17 @@ const API_ENDPOINT = 'https://yesno.wtf/api';
  * 5. Optional: add loading/error states
  *
  */
+
+btnAns.addEventListener("click", function(){
+    if (input.value.length <= 3) {
+        window.alert('Ingresa una preguna valida')
+    } else {
+    fetch (API_ENDPOINT, {
+        method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => answer.innerHTML = data.answer);
+    }
+ 
+});
+//onkeypress="handleKeyEnter(event)" value="" required
